@@ -15,11 +15,13 @@ function my_header(){
       <li class="nav-item">
         <a class="nav-link" href="all.php">All</a>
       </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
       <li class="nav-item">
         <a class="nav-link" href="logout.php">Log out</a>
       </li>
     </ul>
-  </div>
+    </div>
 </nav>
 EOT;
 
