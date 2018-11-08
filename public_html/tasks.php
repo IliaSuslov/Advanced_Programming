@@ -8,13 +8,15 @@ EOT;
 }
 
 function row_task($task){
+    $status_name = status_to_name($task->status);
+    $type = gettype($task->status);
     return <<<EOT
 <tr>
     <td>
         <a class="btn btn-info" href="task.php?id=$task->id">Edit</a>    
     </td>
     <td>$task->title</td>
-    <td>$task->status</td>
+    <td>$status_name</td>
     <td>
         <a class="btn btn-danger" href="task_remove.php?id=$task->id">Delete</a>    
     </td>
@@ -49,13 +51,14 @@ function tasks_table( $result ){
 }
 
 function row_task_all($task){
+    $status_name=status_to_name($task->status);
     return <<<EOT
 <tr>
     <td>
         <a class="btn btn-info" href="task.php?id=$task->id">Edit</a>    
     </td>
     <td>$task->title</td>
-    <td>$task->status</td>
+    <td>$status_name</td>
     <td>$task->username</td>
     <td>
         <a class="btn btn-danger" href="task_remove.php?id=$task->id">Delete</a>    
@@ -83,4 +86,17 @@ function tasks_table_all( $result ){
         . "</tbody></table>";
 }
 
+function status_to_name($status_id){
+    switch ($status_id) {
+        case "0":
+            return "Failed";
+            break;
+        case "1":
+            return "In Progress";
+            break;
+        case "2":
+            return "Complete";
+            break;
+    }
+}
 ?>
